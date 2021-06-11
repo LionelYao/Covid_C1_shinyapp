@@ -18,24 +18,9 @@ library(dplyr)
 library(stringr)
 library(tools)
 
-runUSYDGithub <- function (repo, username = getOption("github.user"), ref = "master", 
-          subdir = NULL, destdir = NULL, ...) 
-{
-  if (grepl("/", repo)) {
-    res <- strsplit(repo, "/")[[1]]
-    if (length(res) != 2) 
-      stop("'repo' must be of the form 'username/repo'")
-    username <- res[1]
-    repo <- res[2]
-  }
-  url <- paste("https://github.sydney.edu.au/", username, "/", repo, 
-               "/archive/", ref, ".tar.gz", sep = "")
-  runUrl(url, subdir = subdir, destdir = destdir, ...)
-}
-
-runUSYDGithub(
+shiny::runGitHub(
   repo = "Covid_C1_shinyapp", 
-  username = "YYAO3610", 
+  username = "LionelYao", 
   ref = "main")
 ```
 
